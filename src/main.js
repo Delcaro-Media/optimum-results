@@ -23,20 +23,41 @@ navLinks.addEventListener('click', (e) => {
   }
 });
 
+// Valid service page slugs
+const SERVICE_PAGES = ['regulatory-compliance', 'fugitive-emissions', 'ultrasonic-testing'];
+
 // Page navigation
-function showPage(pageId) {
+function showPage(pageId, pushState = true) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const page = document.getElementById(`page-${pageId}`);
   if (page) {
     page.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Update browser URL
+    const url = pageId === 'home' ? '/' : `/${pageId}`;
+    if (pushState) {
+      history.pushState({ page: pageId }, '', url);
+    }
     // Track virtual pageview for SPA navigation
     if (window.gtag) {
-      window.gtag('event', 'page_view', { page_path: `/${pageId}` });
+      window.gtag('event', 'page_view', { page_path: url });
     }
     // Re-trigger animations on new page
     setTimeout(observeAnimations, 100);
   }
+}
+
+// Handle browser back/forward
+window.addEventListener('popstate', (e) => {
+  const pageId = e.state?.page || getPageFromPath();
+  showPage(pageId, false);
+});
+
+// Determine page from URL path
+function getPageFromPath() {
+  const path = window.location.pathname.replace(/^\/|\/$/g, '');
+  if (path && SERVICE_PAGES.includes(path)) return path;
+  return 'home';
 }
 
 // Handle data-page links (service detail pages)
@@ -166,6 +187,14 @@ function initCookieConsent() {
 }
 
 initCookieConsent();
+
+// Handle initial route from URL
+const initialPage = getPageFromPath();
+if (initialPage !== 'home') {
+  showPage(initialPage, false);
+} else {
+  history.replaceState({ page: 'home' }, '', '/');
+}
 
 // Initialize
 observeAnimations();
