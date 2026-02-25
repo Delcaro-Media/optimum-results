@@ -30,6 +30,10 @@ function showPage(pageId) {
   if (page) {
     page.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Track virtual pageview for SPA navigation
+    if (window.gtag) {
+      window.gtag('event', 'page_view', { page_path: `/${pageId}` });
+    }
     // Re-trigger animations on new page
     setTimeout(observeAnimations, 100);
   }
@@ -112,6 +116,56 @@ window.addEventListener('scroll', () => {
     a.classList.toggle('active', a.dataset.nav === current);
   });
 });
+
+// Dynamic copyright year
+const copyrightYearEl = document.getElementById('copyright-year');
+if (copyrightYearEl) {
+  copyrightYearEl.textContent = new Date().getFullYear();
+}
+
+// Cookie consent & Google Analytics
+const GA_ID = 'G-XXXXXXXXXX';
+const CONSENT_KEY = 'optimum-cookie-consent';
+
+function loadGoogleAnalytics() {
+  if (document.querySelector(`script[src*="googletagmanager"]`)) return;
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  document.head.appendChild(script);
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', GA_ID, { send_page_view: true });
+}
+
+function initCookieConsent() {
+  const consent = localStorage.getItem(CONSENT_KEY);
+  if (consent === 'accepted') {
+    loadGoogleAnalytics();
+    return;
+  }
+  if (consent === 'declined') return;
+
+  // No decision yet — show banner
+  const banner = document.getElementById('cookie-banner');
+  if (!banner) return;
+  banner.removeAttribute('hidden');
+
+  document.getElementById('cookie-accept').addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    banner.setAttribute('hidden', '');
+    loadGoogleAnalytics();
+  });
+
+  document.getElementById('cookie-decline').addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'declined');
+    banner.setAttribute('hidden', '');
+  });
+}
+
+initCookieConsent();
 
 // Initialize
 observeAnimations();

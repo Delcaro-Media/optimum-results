@@ -8,6 +8,47 @@
   <meta property="og:title" content="Optimum Results Consulting Ltd." />
   <meta property="og:description" content="Optimum Results Consulting Ltd. specializes in regulatory compliance. Working in the oil and gas sector to achieve, remedy or promote regulatory compliance." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.optimumresultsconsulting.com/" />
+  <meta property="og:image" content="https://www.optimumresultsconsulting.com/images/hero.jpg" />
+  <meta property="og:locale" content="en_CA" />
+  <meta property="og:site_name" content="Optimum Results Consulting Ltd." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Optimum Results Consulting Ltd." />
+  <meta name="twitter:description" content="Optimum Results Consulting Ltd. specializes in regulatory compliance. Working in the oil and gas sector to achieve, remedy or promote regulatory compliance." />
+  <meta name="twitter:image" content="https://www.optimumresultsconsulting.com/images/hero.jpg" />
+  <link rel="canonical" href="https://www.optimumresultsconsulting.com/" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Optimum Results Consulting Ltd." />
+  <meta name="theme-color" content="#2d6a4f" />
+  <meta name="geo.region" content="CA-AB" />
+  <meta name="geo.placename" content="Alberta" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Optimum Results Consulting Ltd.",
+    "description": "Optimum Results Consulting Ltd. specializes in regulatory compliance. Working in the oil and gas sector to achieve, remedy or promote regulatory compliance.",
+    "url": "https://www.optimumresultsconsulting.com/",
+    "telephone": "1-403-633-0589",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Alberta",
+      "addressCountry": "CA"
+    },
+    "sameAs": [
+      "https://ca.linkedin.com/pub/kirk-e/b2/6/774"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Consulting Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ultrasonic Testing" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fugitive Emissions" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Regulatory Compliance" } }
+      ]
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
@@ -180,6 +221,31 @@
                 </div>
               </div>
             </div>
+            <div class="contact-form-wrapper" data-animate>
+              <form action="https://formsubmit.co/doug@optimumresults.ca" method="POST" class="contact-form">
+                <input type="hidden" name="_subject" value="New message from Optimum Results website" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="text" name="_honey" style="display:none" />
+                <div class="form-group">
+                  <label for="contact-name">Name</label>
+                  <input type="text" id="contact-name" name="name" required placeholder="Your name" />
+                </div>
+                <div class="form-group">
+                  <label for="contact-email">Email</label>
+                  <input type="email" id="contact-email" name="email" required placeholder="Your email" />
+                </div>
+                <div class="form-group">
+                  <label for="contact-subject">Subject</label>
+                  <input type="text" id="contact-subject" name="subject" required placeholder="Subject" />
+                </div>
+                <div class="form-group">
+                  <label for="contact-message">Message</label>
+                  <textarea id="contact-message" name="message" rows="5" required placeholder="Your message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-secondary btn-form-submit">Send Message</button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
@@ -327,10 +393,21 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>Copyright &copy; 2015 Optimum Results Consulting Ltd.</p>
+        <p>Copyright &copy; 2015-<span id="copyright-year"></span> Optimum Results Consulting Ltd.</p>
       </div>
     </div>
   </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent" hidden>
+    <div class="cookie-banner-content">
+      <p>We use cookies and analytics to improve your experience. By accepting, you consent to the use of Google Analytics to help us understand site usage.</p>
+      <div class="cookie-banner-actions">
+        <button id="cookie-decline" class="btn cookie-btn cookie-btn-decline">Decline</button>
+        <button id="cookie-accept" class="btn cookie-btn cookie-btn-accept">Accept</button>
+      </div>
+    </div>
+  </div>
 
   <script type="module" src="/src/main.js"></script>
 </body>
