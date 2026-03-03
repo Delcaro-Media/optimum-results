@@ -289,11 +289,11 @@ ul, ol {
 
 .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: clamp(1.8rem, 5vw, 3rem);
   font-weight: 700;
   color: white;
-  letter-spacing: 0.06em;
-  line-height: 1.1;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
   margin-bottom: 12px;
   animation: fadeInUp 0.8s ease-out;
 }
@@ -856,7 +856,7 @@ ul, ol {
   display: block;
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
-  color: var(--color-accent-light);
+  color: white;
   line-height: 1.2;
 }
 
