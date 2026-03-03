@@ -26,6 +26,14 @@ navLinks.addEventListener('click', (e) => {
 // Valid service page slugs
 const SERVICE_PAGES = ['regulatory-compliance', 'fugitive-emissions', 'ultrasonic-testing'];
 
+// Page titles for SPA navigation
+const PAGE_TITLES = {
+  'home': 'Optimum Results Consulting Inc. | LDAR Field Execution & Program Oversight',
+  'regulatory-compliance': 'Regulatory Compliance | Optimum Results Consulting Inc.',
+  'fugitive-emissions': 'Fugitive Emissions | Optimum Results Consulting Inc.',
+  'ultrasonic-testing': 'Ultrasonic Testing | Optimum Results Consulting Inc.'
+};
+
 // Page navigation
 function showPage(pageId, pushState = true) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -37,6 +45,14 @@ function showPage(pageId, pushState = true) {
     const url = pageId === 'home' ? '/' : `/${pageId}`;
     if (pushState) {
       history.pushState({ page: pageId }, '', url);
+    }
+    // Update document title
+    document.title = PAGE_TITLES[pageId] || PAGE_TITLES['home'];
+    // Move focus to page heading for screen reader announcement
+    const heading = page.querySelector('h1, h2');
+    if (heading) {
+      heading.setAttribute('tabindex', '-1');
+      heading.focus({ preventScroll: true });
     }
     // Track virtual pageview for SPA navigation
     if (window.gtag) {
@@ -79,6 +95,7 @@ document.addEventListener('click', (e) => {
     // If we're on a service detail page, go back to home first
     const activePage = document.querySelector('.page.active');
     if (activePage && activePage.id !== 'page-home') {
+      e.preventDefault();
       showPage('home');
       // Wait for page to render, then scroll to section
       setTimeout(() => {
@@ -121,7 +138,7 @@ function observeAnimations() {
 }
 
 // Active nav tracking on scroll
-const sections = ['home', 'services', 'case-studies', 'contact'];
+const sections = ['home', 'field-surveys', 'leak-detection', 'program-design', 'program-review', 'case-studies', 'contact'];
 window.addEventListener('scroll', () => {
   const activePage = document.querySelector('.page.active');
   if (!activePage || activePage.id !== 'page-home') return;
