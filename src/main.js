@@ -1,5 +1,30 @@
 import './style.css';
 
+// Hero stat counter animation
+document.querySelectorAll('[data-count-to]').forEach(el => {
+  const target = parseInt(el.dataset.countTo, 10);
+  const suffix = el.dataset.countSuffix || '';
+  const useComma = el.hasAttribute('data-count-comma');
+  const duration = 1800;
+  const start = performance.now();
+
+  function format(n) {
+    return useComma ? n.toLocaleString() : String(n);
+  }
+
+  function step(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // ease-out quad
+    const eased = 1 - (1 - progress) * (1 - progress);
+    const current = Math.round(eased * target);
+    el.textContent = format(current) + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+});
+
 // Navigation scroll effect
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
@@ -138,7 +163,7 @@ function observeAnimations() {
 }
 
 // Active nav tracking on scroll
-const sections = ['home', 'field-surveys', 'leak-detection', 'program-design', 'program-review', 'case-studies', 'contact'];
+const sections = ['home', 'field-surveys', 'leak-detection', 'program-design', 'program-review', 'contact'];
 window.addEventListener('scroll', () => {
   const activePage = document.querySelector('.page.active');
   if (!activePage || activePage.id !== 'page-home') return;
