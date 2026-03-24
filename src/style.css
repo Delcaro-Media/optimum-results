@@ -110,16 +110,16 @@ ul, ol {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(26, 26, 46, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: var(--transition);
 }
 
 #header.scrolled {
-  border-bottom-color: var(--color-border);
-  box-shadow: var(--shadow-sm);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 .nav-container {
@@ -159,15 +159,15 @@ ul, ol {
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--color-text-light);
+  color: rgba(255, 255, 255, 0.8);
   transition: var(--transition);
   position: relative;
 }
 
 .nav-links > li > a:hover,
 .nav-links > li > a.active {
-  color: var(--color-primary);
-  background: rgba(42, 127, 181, 0.06);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* Dropdown */
@@ -225,7 +225,7 @@ ul, ol {
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--color-text);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 2px;
   transition: var(--transition);
 }
@@ -873,7 +873,6 @@ ul, ol {
 .footer-logo-img {
   height: 40px;
   width: auto;
-  filter: brightness(0) invert(1);
 }
 
 .footer-links h4 {
@@ -1561,11 +1560,11 @@ ul, ol {
     top: 72px;
     left: 0;
     right: 0;
-    background: white;
+    background: rgba(26, 26, 46, 0.98);
     flex-direction: column;
     padding: 24px;
     gap: 4px;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     transform: translateY(-120%);
     transition: var(--transition);
     z-index: 999;
