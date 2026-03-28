@@ -227,27 +227,32 @@ function loadGoogleAnalytics() {
 
 function initCookieConsent() {
   const consent = localStorage.getItem(CONSENT_KEY);
-  if (consent === 'accepted') {
-    loadGoogleAnalytics();
-    return;
-  }
+
+  // Only stop GA if user explicitly declined
   if (consent === 'declined') return;
 
-  // No decision yet — show banner
-  const banner = document.getElementById('cookie-banner');
-  if (!banner) return;
-  banner.removeAttribute('hidden');
+  // Load GA immediately unless declined
+  loadGoogleAnalytics();
 
-  document.getElementById('cookie-accept').addEventListener('click', () => {
-    localStorage.setItem(CONSENT_KEY, 'accepted');
-    banner.setAttribute('hidden', '');
-    loadGoogleAnalytics();
-  });
+  // If no decision yet, show the banner
+  if (!consent) {
+    const banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    banner.removeAttribute('hidden');
 
-  document.getElementById('cookie-decline').addEventListener('click', () => {
-    localStorage.setItem(CONSENT_KEY, 'declined');
-    banner.setAttribute('hidden', '');
-  });
+    document.getElementById('cookie-accept').addEventListener('click', () => {
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      banner.setAttribute('hidden', '');
+    });
+
+    document.getElementById('cookie-decline').addEventListener('click', () => {
+      localStorage.setItem(CONSENT_KEY, 'declined');
+      banner.setAttribute('hidden', '');
+      // Disable GA by removing the script and clearing dataLayer
+      window.gtag = function() {};
+      window.dataLayer = [];
+    });
+  }
 }
 
 initCookieConsent();
