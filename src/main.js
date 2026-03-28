@@ -51,12 +51,28 @@ navLinks.addEventListener('click', (e) => {
 // Valid service page slugs
 const SERVICE_PAGES = ['regulatory-compliance', 'fugitive-emissions', 'ultrasonic-testing'];
 
-// Page titles for SPA navigation
-const PAGE_TITLES = {
-  'home': 'Optimum Results Consulting Inc. | LDAR Field Execution & Program Oversight',
-  'regulatory-compliance': 'Regulatory Compliance | Optimum Results Consulting Inc.',
-  'fugitive-emissions': 'Fugitive Emissions | Optimum Results Consulting Inc.',
-  'ultrasonic-testing': 'Ultrasonic Testing | Optimum Results Consulting Inc.'
+// Page meta for SPA navigation
+const PAGE_META = {
+  'home': {
+    title: 'Optimum Results Consulting Inc. | LDAR Field Execution & Program Oversight',
+    description: 'Optimum Results Consulting Inc. — Led by Doug MacArthur with 46+ years in oil and gas. LDAR field surveys, multi-technology leak detection, and independent program oversight. North America\'s trusted partner, along with international consulting and services.',
+    url: 'https://www.optimumresultsconsulting.com/'
+  },
+  'regulatory-compliance': {
+    title: 'Regulatory Compliance Auditing | Optimum Results Consulting Inc.',
+    description: 'Government audits, proactive compliance assessments, and regulatory auditing services for upstream oil and gas operators. 30+ years of regulatory expertise.',
+    url: 'https://www.optimumresultsconsulting.com/regulatory-compliance'
+  },
+  'fugitive-emissions': {
+    title: 'Fugitive Emissions Management | Optimum Results Consulting Inc.',
+    description: 'Comprehensive fugitive emissions surveys using ultrasonic leak detection, LEL, bubble testing, and visual methods. Compliant with AER Bulletin 2009-44 and CAPP best practices.',
+    url: 'https://www.optimumresultsconsulting.com/fugitive-emissions'
+  },
+  'ultrasonic-testing': {
+    title: 'Ultrasonic Leak Detection & Testing | Optimum Results Consulting Inc.',
+    description: 'Ultrasonic technology for industrial leak detection, electrical inspections, and mechanical inspections. Detect pressurized leaks through insulation, cladding, and underground.',
+    url: 'https://www.optimumresultsconsulting.com/ultrasonic-testing'
+  }
 };
 
 // Page navigation
@@ -71,8 +87,14 @@ function showPage(pageId, pushState = true) {
     if (pushState) {
       history.pushState({ page: pageId }, '', url);
     }
-    // Update document title
-    document.title = PAGE_TITLES[pageId] || PAGE_TITLES['home'];
+    // Update document title and meta tags
+    const meta = PAGE_META[pageId] || PAGE_META['home'];
+    document.title = meta.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', meta.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', meta.description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', meta.url);
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', meta.url);
     // Move focus to page heading for screen reader announcement
     const heading = page.querySelector('h1, h2');
     if (heading) {
@@ -187,7 +209,7 @@ if (copyrightYearEl) {
 }
 
 // Cookie consent & Google Analytics
-const GA_ID = 'G-XXXXXXXXXX';
+const GA_ID = 'G-VHLHLTMGG7';
 const CONSENT_KEY = 'optimum-cookie-consent';
 
 function loadGoogleAnalytics() {
