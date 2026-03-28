@@ -1651,6 +1651,10 @@ ul, ol {
     grid-template-columns: 1fr;
   }
 
+  .section-with-image.image-right .section-image {
+    order: -1;
+  }
+
   .section-image img {
     max-height: 250px;
   }
