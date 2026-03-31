@@ -1651,6 +1651,17 @@ ul, ol {
     grid-template-columns: 1fr;
   }
 
+  .section-with-image .section-title,
+  .section-with-image .section-subtitle,
+  .section-with-image .section-content .section-closing {
+    text-align: center;
+  }
+
+  .section-with-image .section-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .section-with-image.image-right .section-image {
     order: -1;
   }
@@ -1665,6 +1676,8 @@ ul, ol {
 
   .tech-grid {
     grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   .detail-features {
@@ -1675,6 +1688,9 @@ ul, ol {
   .review-grid,
   .steps-grid {
     grid-template-columns: 1fr;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-stats {
@@ -1697,6 +1713,16 @@ ul, ol {
 
   .pillars-section {
     padding: 60px 0;
+  }
+
+  .contact-grid {
+    gap: 32px;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .cookie-banner-content {
