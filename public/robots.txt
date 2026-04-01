@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.optimumresultsconsulting.com/sitemap.xml
+Sitemap: https://www.optimumresults.ca/sitemap.xml

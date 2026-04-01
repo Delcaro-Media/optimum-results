@@ -56,22 +56,22 @@ const PAGE_META = {
   'home': {
     title: 'Optimum Results Consulting Inc. | LDAR Field Execution & Program Oversight',
     description: 'Optimum Results Consulting Inc. — Led by Doug MacArthur with 46+ years in oil and gas. LDAR field surveys, multi-technology leak detection, and independent program oversight. North America\'s trusted partner, along with international consulting and services.',
-    url: 'https://www.optimumresultsconsulting.com/'
+    url: 'https://www.optimumresults.ca/'
   },
   'regulatory-compliance': {
     title: 'Regulatory Compliance Auditing | Optimum Results Consulting Inc.',
     description: 'Government audits, proactive compliance assessments, and regulatory auditing services for upstream oil and gas operators. 30+ years of regulatory expertise.',
-    url: 'https://www.optimumresultsconsulting.com/regulatory-compliance'
+    url: 'https://www.optimumresults.ca/regulatory-compliance'
   },
   'fugitive-emissions': {
     title: 'Fugitive Emissions Management | Optimum Results Consulting Inc.',
     description: 'Comprehensive fugitive emissions surveys using ultrasonic leak detection, LEL, bubble testing, and visual methods. Compliant with AER Bulletin 2009-44 and CAPP best practices.',
-    url: 'https://www.optimumresultsconsulting.com/fugitive-emissions'
+    url: 'https://www.optimumresults.ca/fugitive-emissions'
   },
   'ultrasonic-testing': {
     title: 'Ultrasonic Leak Detection & Testing | Optimum Results Consulting Inc.',
     description: 'Ultrasonic technology for industrial leak detection, electrical inspections, and mechanical inspections. Detect pressurized leaks through insulation, cladding, and underground.',
-    url: 'https://www.optimumresultsconsulting.com/ultrasonic-testing'
+    url: 'https://www.optimumresults.ca/ultrasonic-testing'
   }
 };
 
