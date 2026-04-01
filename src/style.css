@@ -190,7 +190,8 @@ ul, ol {
   transition: var(--transition);
 }
 
-.has-dropdown:hover .dropdown {
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -263,9 +264,6 @@ ul, ol {
   background: rgba(20, 60, 90, 0.6);
 }
 
-.hero-overlay {
-  display: none;
-}
 
 .hero-content {
   position: relative;
@@ -354,6 +352,19 @@ ul, ol {
   background: #005e93;
 }
 
+/* Focus states for accessibility */
+.btn:focus-visible,
+.nav-links > li > a:focus-visible,
+.dropdown li a:focus-visible,
+.mobile-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.btn-outline:focus-visible {
+  outline-color: white;
+}
+
 /* ============================
    Services Section
    ============================ */
@@ -420,7 +431,7 @@ ul, ol {
    ============================ */
 .cta-section {
   position: relative;
-  background: url('/images/cta-bg.jpg') center / cover no-repeat;
+  background: url('/images/cta-bg.webp') center / cover no-repeat;
   padding: 100px 0;
   text-align: center;
   overflow: hidden;
@@ -433,9 +444,6 @@ ul, ol {
   background: rgba(20, 60, 90, 0.75);
 }
 
-.cta-overlay {
-  display: none;
-}
 
 .cta-section .container {
   position: relative;
@@ -572,7 +580,7 @@ ul, ol {
 .image-caption {
   text-align: center;
   font-size: 0.85rem;
-  color: var(--text-secondary, #666);
+  color: var(--color-text-muted);
   margin-top: 8px;
   font-style: italic;
 }
@@ -582,7 +590,7 @@ ul, ol {
   padding-left: 1.5rem;
   margin-top: 8px;
   margin-bottom: 0;
-  color: var(--text-secondary, #b0b0b0);
+  color: rgba(255,255,255,0.6);
   font-size: 1.05rem;
   line-height: 1.8;
 }
@@ -1195,9 +1203,9 @@ ul, ol {
   line-height: 1.7;
 }
 
-.bio-intro {
+.bio-block .bio-intro {
   font-weight: 500;
-  color: var(--color-text) !important;
+  color: var(--color-text);
   margin-bottom: 16px;
 }
 
@@ -1328,7 +1336,7 @@ ul, ol {
    ============================ */
 .final-cta-section {
   position: relative;
-  background: url('/images/cta-bg.jpg') center / cover no-repeat;
+  background: url('/images/cta-bg.webp') center / cover no-repeat;
   padding: 100px 0;
   text-align: center;
   overflow: hidden;
