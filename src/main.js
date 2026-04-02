@@ -48,30 +48,12 @@ navLinks.addEventListener('click', (e) => {
   }
 });
 
-// Valid service page slugs
-const SERVICE_PAGES = ['regulatory-compliance', 'fugitive-emissions', 'ultrasonic-testing'];
-
 // Page meta for SPA navigation
 const PAGE_META = {
   'home': {
     title: 'Optimum Results Consulting Inc. | LDAR Field Execution & Program Oversight',
     description: 'Optimum Results Consulting Inc. — Led by Doug MacArthur with 46+ years in oil and gas. LDAR field surveys, multi-technology leak detection, and independent program oversight. North America\'s trusted partner, along with international consulting and services.',
     url: 'https://www.optimumresults.ca/'
-  },
-  'regulatory-compliance': {
-    title: 'Regulatory Compliance Auditing | Optimum Results Consulting Inc.',
-    description: 'Government audits, proactive compliance assessments, and regulatory auditing services for upstream oil and gas operators. 30+ years of regulatory expertise.',
-    url: 'https://www.optimumresults.ca/regulatory-compliance'
-  },
-  'fugitive-emissions': {
-    title: 'Fugitive Emissions Management | Optimum Results Consulting Inc.',
-    description: 'Comprehensive fugitive emissions surveys using ultrasonic leak detection, LEL, bubble testing, and visual methods. Compliant with AER Bulletin 2009-44 and CAPP best practices.',
-    url: 'https://www.optimumresults.ca/fugitive-emissions'
-  },
-  'ultrasonic-testing': {
-    title: 'Ultrasonic Leak Detection & Testing | Optimum Results Consulting Inc.',
-    description: 'Ultrasonic technology for industrial leak detection, electrical inspections, and mechanical inspections. Detect pressurized leaks through insulation, cladding, and underground.',
-    url: 'https://www.optimumresults.ca/ultrasonic-testing'
   }
 };
 
@@ -118,40 +100,14 @@ window.addEventListener('popstate', (e) => {
 
 // Determine page from URL path
 function getPageFromPath() {
-  const path = window.location.pathname.replace(/^\/|\/$/g, '');
-  if (path && SERVICE_PAGES.includes(path)) return path;
   return 'home';
 }
 
-// Handle data-page links (service detail pages)
+// Handle data-nav links
 document.addEventListener('click', (e) => {
-  const pageLink = e.target.closest('[data-page]');
-  if (pageLink) {
-    e.preventDefault();
-    const pageId = pageLink.dataset.page;
-    showPage(pageId);
-    // Update active nav state
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-    return;
-  }
-
   const navLink = e.target.closest('[data-nav]');
   if (navLink) {
     const target = navLink.dataset.nav;
-
-    // If we're on a service detail page, go back to home first
-    const activePage = document.querySelector('.page.active');
-    if (activePage && activePage.id !== 'page-home') {
-      e.preventDefault();
-      showPage('home');
-      // Wait for page to render, then scroll to section
-      setTimeout(() => {
-        const section = document.getElementById(target);
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }
 
     // Update active nav state
     document.querySelectorAll('.nav-links > li > a').forEach(a => a.classList.remove('active'));
